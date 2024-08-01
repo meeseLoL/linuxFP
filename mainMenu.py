@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-#hello from master
-=======
+#MAAAAAAAAAAAAAAAAAASTUUUUUUUUUUUUUUUUUUUUUR
 #this is what we want to work in
 
 def addUser():
