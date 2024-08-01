@@ -1,5 +1,7 @@
 #Testing changes
 
+#testing now this too
+
 def addUser():
     #logic
     print("adding a user")
@@ -23,6 +25,7 @@ def viewLog():
 def exit():
     #logic
     print("exiting")
+    print("maybe")
 
 
 
@@ -70,3 +73,6 @@ def main():
 
 if name == "main":
     main()
+
+
+    #test test
