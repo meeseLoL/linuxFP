@@ -21,6 +21,7 @@ def viewLog():
 def exit():
     #logic
     print("exiting")
+    print("maybe")
 
 
 
@@ -68,3 +69,6 @@ def main():
 
 if name == "main":
     main()
+
+
+    #test test
