@@ -1,8 +1,15 @@
+from datetime import datetime
+import os
 import sqlite3
 
 def connect_to_skeletondb():
     con = sqlite3.connect('skeletondb.db')
     return con    
+
+def log_action(action):
+    with open('logs.txt', 'a') as log_file:
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        log_file.write(f"{timestamp} - {action}\n")
 
 def display_database():
     con = connect_to_skeletondb()
@@ -15,6 +22,7 @@ def display_database():
         print(row)
     
     con.close()
+    log_action("Displayed database")
 
 def addEmployee():
     employee_id = input("Enter employee's unique id: ")
@@ -28,6 +36,7 @@ def addEmployee():
     con.commit()
     con.close()
     print(f"Employee {employee_id} added successfully.")
+    log_action(f"Added employee {employee_id}: {first_name} {last_name}, {job_title}, {perms}")
 
 def modifyEmployee():
     employee_id = input("Enter the employee ID to modify: ")
@@ -39,6 +48,7 @@ def modifyEmployee():
     con.commit()
     con.close()
     print(f"Employee {employee_id} updated successfully.")
+    log_action(f"Modified employee {employee_id}, set {field} to {new_value}")
 
 def deleteEmployee():
     employee_id = input("Enter the employee ID to delete: ")
@@ -48,6 +58,7 @@ def deleteEmployee():
     con.commit()
     con.close()
     print(f"Employee {employee_id} deleted successfully.")
+    log_action(f"Deleted employee {employee_id}")
 
 def viewLogs():
     # Assuming logs are stored in a file named 'logs.txt'
@@ -56,3 +67,4 @@ def viewLogs():
             print(file.read())
     else:
         print("No logs found.")
+    log_action("Viewed logs")

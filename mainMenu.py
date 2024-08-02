@@ -1,5 +1,12 @@
 from employees import addEmployee, modifyEmployee, deleteEmployee, viewLogs, display_database
 import os
+import subprocess
+
+def run_awk_script():
+    subprocess.run(['awk', '/keyword/', 'logs.txt'])
+
+def run_perl_script():
+    subprocess.run(['perl', 'process_logs.pl'])
 
 def mainMenu():
     while True:
@@ -9,9 +16,11 @@ def mainMenu():
         print("3. Delete a user")
         print("4. Display database")
         print("5. View logs")
-        print("6. Exit")
+        print("6. Run AWK Script")
+        print("7. Run Perl Script")
+        print("8. Exit")
 
-        choice = input("Enter a number (1-6): ")
+        choice = input("Enter a number (1-8): ")
 
         if choice == "1":
             print("You selected to add a user.")
@@ -29,10 +38,16 @@ def mainMenu():
             print("You selected to view the logs.")
             viewLogs()
         elif choice == "6":
+            print("You selected to run the AWK script.")
+            run_awk_script()
+        elif choice == "7":
+            print("You selected to run the Perl script.")
+            run_perl_script()
+        elif choice == "8":
             print("Exiting")
             break
         else:
-            print("Invalid choice. Please enter a number between 1 and 6.")
+            print("Invalid choice. Please enter a number between 1 and 8.")
 
 if __name__ == "__main__":
     mainMenu()

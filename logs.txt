@@ -1,0 +1,7 @@
+2024-08-01 19:49:32 - Added employee test: the logs, right, now
+2024-08-01 19:49:33 - Viewed logs
+2024-08-01 19:49:34 - Viewed logs
+2024-08-01 19:50:10 - Viewed logs
+2024-08-01 19:50:36 - Deleted employee test
+2024-08-01 19:50:39 - Viewed logs
+2024-08-01 19:50:59 - Displayed database
