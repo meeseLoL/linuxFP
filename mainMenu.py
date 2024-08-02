@@ -19,6 +19,7 @@ def run_perl_script():
     except subprocess.CalledProcessError as e:
         print(f"An error occurred while running the Perl script: {e}")
 
+# Displays the menu
 def mainMenu():
     while True:
         print("\nMain Menu:")
@@ -44,9 +45,9 @@ def mainMenu():
             deleteEmployee()
         elif choice == "4":
             print("You selected to display the database.")
-            display_database()
-            subprocess.Popen(['python', 'app.py'])
-            webbrowser.open('http://127.0.0.1:5000')
+            display_database() # Displays the data base in the terminal
+            subprocess.Popen(['python', 'app.py']) # executes app.py
+            webbrowser.open('http://127.0.0.1:5000') # opens the browser to view the employee database
         elif choice == "5":
             print("You selected to view the logs.")
             viewLogs()

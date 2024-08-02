@@ -5,17 +5,9 @@ import sqlite3
 
 app = Flask(__name__)
 
-def get_skeletondb():
-    con = sqlite3.connect('skeletondb.db')
-    cur = con.cursor()
-    cur.execute('SELECT * FROM employees')
-    rows = cur.fetchall()
-    con.close()
-
-
 @app.route('/')
 def home():
-    data = get_all_employees()
+    data = get_all_employees() #pulls all employee data from the database
     return render_template('display_db.html', data=data)
 
 if __name__ == '__main__':
