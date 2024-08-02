@@ -30,3 +30,10 @@
 2024-08-02 12:23:12 - Displayed database
 2024-08-02 12:23:53 - Added employee testing: database webpage, table, 5
 2024-08-02 12:23:56 - Displayed database
+2024-08-02 12:28:15 - Displayed database
+2024-08-02 12:28:37 - Displayed database
+2024-08-02 12:28:50 - Added employee 101: the one neo, ceo, 5
+2024-08-02 13:04:22 - Added employee Ballj01: Justin Ballard, CEO, 5
+2024-08-02 13:06:43 - Modified employee Ballj01, set job_title to Programmer
+2024-08-02 13:09:27 - Added employee ballj03: Justin Ballard, software engineer, 4
+2024-08-02 13:09:35 - Displayed database

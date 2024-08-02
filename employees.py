@@ -1,6 +1,7 @@
 from datetime import datetime
 import os
 import sqlite3
+import re
 
 def connect_to_skeletondb():
     con = sqlite3.connect('skeletondb.db')
@@ -25,11 +26,41 @@ def display_database():
     log_action("Displayed database")
 
 def addEmployee():
-    employee_id = input("Enter employee's unique id: ")
-    first_name = input("Enter employee's first name: ")
-    last_name = input("Enter employee's last name: ")
-    job_title = input("Enter employee's job title: ")
-    perms = input("Employee's permissions: ")
+    while True:
+        employee_id = input("Enter employee's unique id (5 alphabetic characters followed by 2 numeric characters): ")
+        if re.match(r'^[A-Za-z]{5}\d{2}$', employee_id):
+            break
+        else:
+            print("Invalid employee ID. Please try again.")
+            
+    while True:
+        first_name = input("Enter employee's first name (alphabetic characters only): ")
+        if re.match(r'^[A-Za-z]+$', first_name):
+            break
+        else:
+            print("Invalid first name. Please try again.")
+            
+    while True:
+        last_name = input("Enter employee's last name (alphabetic characters only): ")
+        if re.match(r'^[A-Za-z]+$', last_name):
+            break
+        else:
+            print("Invalid last name. Please try again.")
+            
+    while True:
+        job_title = input("Enter employee's job title (alphabetic characters only): ")
+        if re.match(r'^([A-Za-z]+ ?){1,4}$', job_title):
+            break
+        else:
+            print("Invalid job title. Please try again.")
+            
+    while True:
+        perms = input("Enter employee's permissions (numeric 1-5): ")
+        if re.match(r'^[1-5]$', perms):
+            break
+        else:
+            print("Invalid permissions. Please enter a number between 1 and 5.")
+            
     con = connect_to_skeletondb()
     cur = con.cursor()
     cur.execute('''INSERT INTO employees (employee_id, first_name, last_name, job_title, perms) VALUES (?, ?, ?, ?, ?)''', (employee_id, first_name, last_name, job_title, perms))
@@ -39,9 +70,33 @@ def addEmployee():
     log_action(f"Added employee {employee_id}: {first_name} {last_name}, {job_title}, {perms}")
 
 def modifyEmployee():
-    employee_id = input("Enter the employee ID to modify: ")
-    field = input("Enter the field to modify (first_name, last_name, job_title, perms): ")
-    new_value = input(f"Enter the new value for {field}: ")
+    while True:
+        employee_id = input("Enter the employee ID to modify (5 alphabetic characters followed by 2 numeric characters): ")
+        if re.match(r'^[A-Za-z]{5}\d{2}$', employee_id):
+            break
+        else:
+            print("Invalid employee ID. Please try again.")
+    
+    while True:
+        field = input("Enter the field to modify (first_name, last_name, job_title, perms): ")
+        if field in ["first_name", "last_name", "job_title", "perms"]:
+            break
+        else:
+            print("Invalid field. Please try again.")
+            
+    while True:
+        new_value = input(f"Enter the new value for {field}: ")
+        if field in ["first_name", "last_name", "job_title"]:
+            if re.match(r'^[A-Za-z]+$', new_value):
+                break
+            else:
+                print(f"Invalid {field}. Please try again.")
+        elif field == "perms":
+            if re.match(r'^[1-5]$', new_value):
+                break
+            else:
+                print("Invalid permissions. Please enter a number between 1 and 5.")
+    
     con = connect_to_skeletondb()
     cur = con.cursor()
     cur.execute(f'''UPDATE employees SET {field} = ? WHERE employee_id = ?''', (new_value, employee_id))
@@ -51,7 +106,13 @@ def modifyEmployee():
     log_action(f"Modified employee {employee_id}, set {field} to {new_value}")
 
 def deleteEmployee():
-    employee_id = input("Enter the employee ID to delete: ")
+    while True:
+        employee_id = input("Enter the employee ID to delete (5 alphabetic characters followed by 2 numeric characters): ")
+        if re.match(r'^[A-Za-z]{5}\d{2}$', employee_id):
+            break
+        else:
+            print("Invalid employee ID. Please try again.")
+    
     con = connect_to_skeletondb()
     cur = con.cursor()
     cur.execute('''DELETE FROM employees WHERE employee_id = ?''', (employee_id,))

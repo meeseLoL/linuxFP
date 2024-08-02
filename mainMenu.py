@@ -27,8 +27,8 @@ def mainMenu():
         print("3. Delete a user")
         print("4. Display database")
         print("5. View logs")
-        print("6. Run AWK Script")
-        print("7. Run Perl Script")
+        print("6. Filter logs by keyword")
+        print("7. View # of log entries")
         print("8. Exit")
 
         choice = input("Enter a number (1-8): ")
@@ -51,7 +51,7 @@ def mainMenu():
             print("You selected to view the logs.")
             viewLogs()
         elif choice == "6":
-            print("You selected to run the AWK script.")
+            print("You selected to filter the logs by a keyword, please enter a keyword: ")
             run_awk_script()
         elif choice == "7":
             print("You selected to View # of log entries.")
