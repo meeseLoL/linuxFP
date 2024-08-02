@@ -1,4 +1,20 @@
-from db_connection import connect_to_skeletondb
+import sqlite3
+
+def connect_to_skeletondb():
+    con = sqlite3.connect('skeletondb.db')
+    return con    
+
+def display_database():
+    con = connect_to_skeletondb()
+    cur = con.cursor()
+    
+    cur.execute('SELECT * FROM employees')
+    rows = cur.fetchall()
+    
+    for row in rows:
+        print(row)
+    
+    con.close()
 
 def addEmployee():
     employee_id = input("Enter employee's unique id: ")
