@@ -2,16 +2,23 @@
 use strict;
 use warnings;
 
-# Open the log file
-open(my $fh, '<', 'logs.txt') or die "Could not open file 'logs.txt' $!";
+# Check if the log file exists
+my $log_file = 'logs.txt';
+if (-e $log_file) {
+    open my $fh, '<', $log_file or die "Cannot open '$log_file': $!";
+    
+    # Initialize a counter
+    my $count = 0;
 
-# Process each line
-while (my $line = <$fh>) {
-    chomp $line;
-    # Example: Print lines that contain 'ERROR'
-    if ($line =~ /ERROR/) {
-        print "$line\n";
+    # Process each line in the file
+    while (my $line = <$fh>) {
+        $count++;
+        # Add custom processing logic here if needed
     }
-}
 
-close($fh);
+    close $fh;
+
+    print "Total log entries: $count\n";
+} else {
+    print "Log file does not exist.\n";
+}

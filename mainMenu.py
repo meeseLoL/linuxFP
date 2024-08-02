@@ -13,7 +13,10 @@ def run_awk_script():
 
 
 def run_perl_script():
-    subprocess.run(['perl', 'process_logs.pl'])
+    try:
+        subprocess.run(['perl', 'process_logs.pl'], check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"An error occurred while running the Perl script: {e}")
 
 def mainMenu():
     while True:
@@ -48,7 +51,7 @@ def mainMenu():
             print("You selected to run the AWK script.")
             run_awk_script()
         elif choice == "7":
-            print("You selected to run the Perl script.")
+            print("You selected to View # of log entries.")
             run_perl_script()
         elif choice == "8":
             print("Exiting")
