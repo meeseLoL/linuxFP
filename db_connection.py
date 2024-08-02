@@ -8,11 +8,14 @@ def skeletondb():
     con = connect_to_skeletondb()
     cur = con.cursor()
     cur.execute('''CREATE TABLE IF NOT EXISTS employees (
-            employee_id TEXT NOT NULL,
+            employee_id TEXT NOT NULL PRIMARY KEY,
             first_name TEXT NOT NULL,
             last_name TEXT NOT NULL,
             job_title TEXT,
             perms TEXT)''')
-
     con.commit()
     con.close()
+
+# Ensure the database and table are created when the module is loaded
+if __name__ == "__main__":
+    skeletondb()
