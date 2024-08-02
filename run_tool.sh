@@ -1,4 +1,5 @@
 #!/bin/bash
+#Contributors: Dann, Justin, Lloyd
 
 # Function to display a message and run a Python script
 run_python_script() {

@@ -1,3 +1,5 @@
+#Contributors: Dann, Justin, Lloyd
+
 from employees import addEmployee, modifyEmployee, deleteEmployee, viewLogs, display_database
 import os
 import subprocess

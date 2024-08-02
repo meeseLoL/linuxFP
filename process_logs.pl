@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+#Contributors: Dann, Justin, Lloyd
+
 use strict;
 use warnings;
 
