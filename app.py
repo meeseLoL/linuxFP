@@ -1,7 +1,5 @@
 from flask import Flask, request, render_template, redirect, url_for
 from db_connection import get_all_employees
-import sqlite3
-
 
 app = Flask(__name__)
 
