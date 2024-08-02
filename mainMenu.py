@@ -3,8 +3,7 @@
 
 def addUser():
     #logic
-    print("adding a user")
-
+    print("add auser")
 def modUser():
     #logica
     print("modify a user")
