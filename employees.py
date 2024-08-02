@@ -1,27 +1,11 @@
-import sqlite3
-
-con = sqlite3.connect('skeletondb.db')
-
-cur = con.cursor()
-
-def deleteEmployeesTable():
-    cur.execute('DROP TABLE IF EXISTS employees')
-    con.commit()
-
-deleteEmployeesTable()
-
-cur.execute('''CREATE TABLE IF NOT EXISTS employees (
-        employee_id TEXT NOT NULL,
-        first_name TEXT NOT NULL,
-        last_name TEXT NOT NULL,
-        job_title TEXT,
-        perms TEXT)''')
-
-con.commit()
+from db_connection import connect_to_skeletondb
 
 def addEmployee(employee_id, first_name, last_name, job_title, perms):
+    con = connect_to_skeletondb()
+    cur = con.cursor()
     cur.execute('''INSERT INTO employees (employee_id, first_name, last_name, job_title, perms) VALUES (?, ?, ?, ?, ?)''', (employee_id, first_name, last_name, job_title, perms))
     con.commit()
+    con.close()
 
 
 def userInput():
@@ -32,14 +16,16 @@ def userInput():
     perms = input("Employee's permissions: ")
     addEmployee(employee_id, first_name, last_name, job_title, perms)
 
-userInput()
-
-def fetchAllEmployees():
+def fetch_all_employees():
+    con = connect_to_skeletondb()
+    cur = con.cursor()
     cur.execute('SELECT * FROM employees')
     rows = cur.fetchall()
-    for row in rows:
-        print(row)
+    con.close()
+    return rows
 
-fetchAllEmployees()
+userInput()
 
-con.close()
+employees = fetch_all_employees()
+for employee in employees:
+    print(employee)
