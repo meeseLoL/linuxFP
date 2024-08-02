@@ -11,3 +11,22 @@
 2024-08-01 20:04:51 - Viewed logs
 2024-08-01 20:20:30 - Displayed database
 2024-08-01 20:20:31 - Viewed logs
+2024-08-02 11:44:17 - Displayed database
+2024-08-02 11:46:23 - Displayed database
+2024-08-02 11:49:04 - Displayed database
+2024-08-02 11:49:15 - Displayed database
+2024-08-02 11:54:37 - Displayed database
+2024-08-02 11:54:55 - Displayed database
+2024-08-02 11:56:25 - Displayed database
+2024-08-02 12:02:31 - Displayed database
+2024-08-02 12:03:05 - Displayed database
+2024-08-02 12:03:20 - Added employee dmanga01: dann manganti, seo, 5
+2024-08-02 12:03:21 - Displayed database
+2024-08-02 12:10:25 - Displayed database
+2024-08-02 12:10:32 - Displayed database
+2024-08-02 12:18:40 - Displayed database
+2024-08-02 12:20:22 - Displayed database
+2024-08-02 12:22:24 - Displayed database
+2024-08-02 12:23:12 - Displayed database
+2024-08-02 12:23:53 - Added employee testing: database webpage, table, 5
+2024-08-02 12:23:56 - Displayed database

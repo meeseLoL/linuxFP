@@ -1,42 +1,22 @@
 from flask import Flask, request, render_template, redirect, url_for
+from db_connection import get_all_employees
 import sqlite3
-from employees import addEmployee, modifyEmployee, deleteEmployee, display_database, viewLogs
+
 
 app = Flask(__name__)
 
+def get_skeletondb():
+    con = sqlite3.connect('skeletondb.db')
+    cur = con.cursor()
+    cur.execute('SELECT * FROM employees')
+    rows = cur.fetchall()
+    con.close()
+
+
 @app.route('/')
 def home():
-    return render_template('index.html')
-
-@app.route('/add', methods=['GET', 'POST'])
-def add_employee():
-    if request.method == 'POST':
-        employee_id = request.form['employee_id']
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
-        job_title = request.form['job_title']
-        perms = request.form['perms']
-        addEmployee(employee_id, first_name, last_name, job_title, perms)
-        return redirect(url_for('home'))
-    return render_template('addEmployee.html')
-
-@app.route('/modify', methods=['GET', 'POST'])
-def modify_employee():
-    if request.method == 'POST':
-        employee_id = request.form['employee_id']
-        field = request.form['field']
-        new_value = request.form['new_value']
-        modifyEmployee(employee_id, field, new_value)
-        return redirect(url_for('home'))
-    return render_template('modify.html')
-
-@app.route('/delete')
-def display():
-    return display_database()
-
-@app.route('/logs')
-def logs():
-    return viewLogs()
+    data = get_all_employees()
+    return render_template('display_db.html', data=data)
 
 if __name__ == '__main__':
     app.run(debug=True)

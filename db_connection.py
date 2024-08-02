@@ -16,6 +16,15 @@ def skeletondb():
     con.commit()
     con.close()
 
+def get_all_employees():
+    con = sqlite3.connect('skeletondb.db')
+    cur = con.cursor()
+    cur.execute('SELECT * FROM employees')
+    rows = cur.fetchall()
+    con.close()
+
+    return rows
+
 # Ensure the database and table are created when the module is loaded
 if __name__ == "__main__":
     skeletondb()

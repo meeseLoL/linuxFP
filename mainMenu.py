@@ -1,8 +1,9 @@
 from employees import addEmployee, modifyEmployee, deleteEmployee, viewLogs, display_database
 import os
 import subprocess
+import webbrowser
+import display_db
 
-import subprocess
 
 def run_awk_script():
     keyword = input("Enter keyword to filter logs: ")
@@ -44,6 +45,8 @@ def mainMenu():
         elif choice == "4":
             print("You selected to display the database.")
             display_database()
+            subprocess.Popen(['python', 'app.py'])
+            webbrowser.open('http://127.0.0.1:5000')
         elif choice == "5":
             print("You selected to view the logs.")
             viewLogs()
