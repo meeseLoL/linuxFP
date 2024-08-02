@@ -5,3 +5,4 @@
 2024-08-01 19:50:36 - Deleted employee test
 2024-08-01 19:50:39 - Viewed logs
 2024-08-01 19:50:59 - Displayed database
+2024-08-01 19:56:39 - Viewed logs

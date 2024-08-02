@@ -2,8 +2,15 @@ from employees import addEmployee, modifyEmployee, deleteEmployee, viewLogs, dis
 import os
 import subprocess
 
+import subprocess
+
 def run_awk_script():
-    subprocess.run(['awk', '/keyword/', 'logs.txt'])
+    keyword = input("Enter keyword to filter logs: ")
+    if keyword:
+        subprocess.run(['awk', f'/{keyword}/', 'logs.txt'])
+    else:
+        print("No keyword provided.")
+
 
 def run_perl_script():
     subprocess.run(['perl', 'process_logs.pl'])
