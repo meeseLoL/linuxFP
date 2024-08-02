@@ -1,3 +1,5 @@
+#Contributors: Dann, Justin, Lloyd
+
 from flask import Flask, request, render_template, redirect, url_for
 from db_connection import get_all_employees
 

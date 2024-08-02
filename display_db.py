@@ -1,3 +1,5 @@
+#Contributors: Dann, Justin, Lloyd
+
 import sqlite3
 
 def display_database():
