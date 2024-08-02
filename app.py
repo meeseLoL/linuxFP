@@ -27,7 +27,7 @@ def modify_employee():
         field = request.form['field']
         new_value = request.form['new_value']
         modifyEmployee(employee_id, field, new_value)
-        return 'Employee successfully modified'
+        return redirect(url_for('home'))
     return render_template('modify.html')
 
 @app.route('/delete')
